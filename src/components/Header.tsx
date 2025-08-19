@@ -6,7 +6,7 @@ export const Header = () => {
       <div className="container mx-auto flex h-16 items-center justify-between px-4">
         <div className="flex items-center space-x-4">
           <h1 className="text-xl font-bold text-foreground">
-            Visa Transaction Analyzer
+            AI Transaction Analyzer
           </h1>
         </div>
         
