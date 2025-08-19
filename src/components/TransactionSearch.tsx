@@ -49,7 +49,7 @@ export const TransactionSearch = ({ onSearch, isLoading, searchStatus, errorMess
   };
 
   return (
-    <Card className="w-full max-w-4xl mx-auto bg-gradient-to-br from-card to-muted/30 shadow-lg border-0">
+    <Card className="w-full max-w-4xl mx-auto bg-card shadow-lg border">
       <CardHeader className="pb-6">
         <CardTitle className="text-3xl font-bold text-center bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
           AI Transaction Analysis Tool
@@ -71,7 +71,7 @@ export const TransactionSearch = ({ onSearch, isLoading, searchStatus, errorMess
               Select AI Agent Type:
             </label>
             <Select value={agentType} onValueChange={setAgentType}>
-              <SelectTrigger className="w-full h-12 border-2 bg-background/50 backdrop-blur-sm">
+              <SelectTrigger className="w-full h-12 border bg-background">
                 <div className="flex items-center gap-2">
                   <Bot className="h-4 w-4 text-primary" />
                   <SelectValue placeholder="Choose analysis type..." />
@@ -97,12 +97,12 @@ export const TransactionSearch = ({ onSearch, isLoading, searchStatus, errorMess
                 placeholder="e.g., 80033448364"
                 value={transactionId}
                 onChange={(e) => setTransactionId(e.target.value)}
-                className="flex-1 h-12 border-2 bg-background/50 backdrop-blur-sm"
+                className="flex-1 h-12 border bg-background"
               />
               <Button
                 type="submit"
                 disabled={!agentType || !transactionId || isLoading}
-                className="h-12 px-8 bg-gradient-to-r from-primary to-primary/90 hover:from-primary/90 hover:to-primary/80 shadow-lg"
+                className="h-12 px-8 bg-primary hover:bg-primary/90"
               >
                 {isLoading ? (
                   <>

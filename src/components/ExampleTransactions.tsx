@@ -73,7 +73,7 @@ export const ExampleTransactions = ({ onSelectExample }: ExampleTransactionsProp
   };
 
   return (
-    <Card className="w-full max-w-4xl mx-auto bg-gradient-to-br from-muted/30 to-accent/10 border border-border/50">
+    <Card className="w-full max-w-4xl mx-auto bg-card border">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
           <Button
@@ -97,7 +97,7 @@ export const ExampleTransactions = ({ onSelectExample }: ExampleTransactionsProp
               {exampleTransactions.map((transaction) => (
                 <div
                   key={transaction.id}
-                  className="flex items-center justify-between p-4 bg-background/50 backdrop-blur-sm rounded-lg border border-border/30 hover:border-primary/30 transition-all cursor-pointer group"
+                  className="flex items-center justify-between p-4 bg-background rounded-lg border hover:border-primary/50 transition-all cursor-pointer group"
                   onClick={() => onSelectExample(transaction.id)}
                 >
                   <div className="flex items-center gap-4">

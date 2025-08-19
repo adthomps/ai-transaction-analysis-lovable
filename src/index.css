@@ -8,27 +8,30 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    --background: 248 250 252;
-    --foreground: 212 17% 17%;
+    /* Visa Design System Colors - All HSL */
+    --background: 0 0% 100%;
+    --foreground: 234 26% 22%;
 
     --card: 0 0% 100%;
-    --card-foreground: 212 17% 17%;
+    --card-foreground: 234 26% 22%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 212 17% 17%;
+    --popover-foreground: 234 26% 22%;
 
-    --primary: 214 84% 56%;
+    /* Visa Blue as Primary - #1434CB converted to HSL */
+    --primary: 234 84% 44%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 214 14% 93%;
-    --secondary-foreground: 214 84% 20%;
+    --secondary: 234 12% 96%;
+    --secondary-foreground: 234 26% 22%;
 
-    --muted: 214 14% 96%;
-    --muted-foreground: 214 14% 45%;
+    --muted: 234 12% 96%;
+    --muted-foreground: 234 12% 45%;
 
-    --accent: 214 14% 93%;
-    --accent-foreground: 214 84% 20%;
+    --accent: 234 12% 96%;
+    --accent-foreground: 234 26% 22%;
 
+    /* Trust and reliability colors */
     --success: 142 76% 36%;
     --success-foreground: 0 0% 100%;
 
@@ -38,22 +41,22 @@ All colors MUST be HSL.
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 214 14% 90%;
-    --input: 214 14% 94%;
-    --ring: 214 84% 56%;
+    --border: 234 12% 90%;
+    --input: 234 12% 94%;
+    --ring: 234 84% 44%;
 
     --radius: 0.75rem;
 
-    /* Gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(214 84% 46%));
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 26%));
-    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%), hsl(214 14% 98%));
+    /* Clean, professional gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(234 84% 44%), hsl(234 84% 38%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 30%));
+    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%), hsl(234 12% 98%));
     
-    /* Shadows */
-    --shadow-elegant: 0 4px 20px -2px hsl(214 84% 56% / 0.15);
-    --shadow-soft: 0 2px 10px -2px hsl(214 14% 45% / 0.1);
+    /* Subtle shadows for depth */
+    --shadow-elegant: 0 4px 20px -2px hsl(234 84% 44% / 0.15);
+    --shadow-soft: 0 2px 10px -2px hsl(234 12% 45% / 0.1);
     
-    /* Animations */
+    /* Smooth transitions */
     --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
@@ -74,44 +77,46 @@ All colors MUST be HSL.
   }
 
   .dark {
-    --background: 214 15% 8%;
-    --foreground: 214 14% 95%;
+    /* Visa Dark Mode - maintaining brand consistency */
+    --background: 234 26% 8%;
+    --foreground: 234 12% 95%;
 
-    --card: 214 15% 12%;
-    --card-foreground: 214 14% 95%;
+    --card: 234 26% 12%;
+    --card-foreground: 234 12% 95%;
 
-    --popover: 214 15% 12%;
-    --popover-foreground: 214 14% 95%;
+    --popover: 234 26% 12%;
+    --popover-foreground: 234 12% 95%;
 
-    --primary: 214 84% 56%;
-    --primary-foreground: 214 15% 8%;
+    /* Visa Blue adapted for dark mode */
+    --primary: 234 84% 64%;
+    --primary-foreground: 234 26% 8%;
 
-    --secondary: 214 15% 16%;
-    --secondary-foreground: 214 14% 85%;
+    --secondary: 234 15% 16%;
+    --secondary-foreground: 234 12% 85%;
 
-    --muted: 214 15% 16%;
-    --muted-foreground: 214 14% 65%;
+    --muted: 234 15% 16%;
+    --muted-foreground: 234 12% 65%;
 
-    --accent: 214 15% 16%;
-    --accent-foreground: 214 14% 85%;
+    --accent: 234 15% 16%;
+    --accent-foreground: 234 12% 85%;
 
-    --success: 142 76% 36%;
-    --success-foreground: 214 15% 8%;
+    --success: 142 76% 46%;
+    --success-foreground: 234 26% 8%;
 
-    --warning: 38 92% 50%;
-    --warning-foreground: 214 15% 8%;
+    --warning: 38 92% 60%;
+    --warning-foreground: 234 26% 8%;
 
-    --destructive: 0 84% 60%;
-    --destructive-foreground: 214 14% 95%;
+    --destructive: 0 84% 70%;
+    --destructive-foreground: 234 12% 95%;
 
-    --border: 214 15% 20%;
-    --input: 214 15% 16%;
-    --ring: 214 84% 56%;
+    --border: 234 15% 20%;
+    --input: 234 15% 16%;
+    --ring: 234 84% 64%;
 
     /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(214 84% 56%), hsl(214 84% 46%));
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 26%));
-    --gradient-surface: linear-gradient(145deg, hsl(214 15% 12%), hsl(214 15% 10%));
+    --gradient-primary: linear-gradient(135deg, hsl(234 84% 64%), hsl(234 84% 54%));
+    --gradient-success: linear-gradient(135deg, hsl(142 76% 46%), hsl(142 76% 36%));
+    --gradient-surface: linear-gradient(145deg, hsl(234 26% 12%), hsl(234 26% 10%));
   }
 }
 

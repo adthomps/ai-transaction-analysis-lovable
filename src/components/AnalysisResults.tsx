@@ -66,9 +66,9 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
         case "primary":
           return "bg-primary/5 border-primary/20";
         case "secondary":
-          return "bg-secondary/30 border-secondary/40";
+          return "bg-secondary border-secondary/40";
         default:
-          return "bg-muted/20 border-border/30";
+          return "bg-muted/10 border-border";
       }
     };
 
@@ -111,7 +111,7 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
         variant="primary"
       >
         <div className="space-y-6">
-          <Card className="bg-background/50 border-border/30">
+          <Card className="bg-background border">
             <CardHeader>
               <CardTitle className="text-xl">Transaction Analysis Summary</CardTitle>
             </CardHeader>
