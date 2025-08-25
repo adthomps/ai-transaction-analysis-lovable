@@ -8,56 +8,55 @@ All colors MUST be HSL.
 
 @layer base {
   :root {
-    /* Visa Design System Colors - All HSL */
+    /* Visa Design System Colors - All HSL - Optimized for trust and reliability */
     --background: 0 0% 100%;
-    --foreground: 234 26% 22%;
+    --foreground: 231 15% 18%;
 
     --card: 0 0% 100%;
-    --card-foreground: 234 26% 22%;
+    --card-foreground: 231 15% 18%;
 
     --popover: 0 0% 100%;
-    --popover-foreground: 234 26% 22%;
+    --popover-foreground: 231 15% 18%;
 
-    /* Visa Blue as Primary - #1434CB converted to HSL */
+    /* Visa Blue Primary - Professional and trustworthy */
     --primary: 234 84% 44%;
     --primary-foreground: 0 0% 100%;
 
-    --secondary: 234 12% 96%;
-    --secondary-foreground: 234 26% 22%;
+    /* Enhanced secondary colors for better contrast */
+    --secondary: 234 8% 95%;
+    --secondary-foreground: 231 15% 18%;
 
-    --muted: 234 12% 96%;
-    --muted-foreground: 234 12% 45%;
+    --muted: 234 8% 95%;
+    --muted-foreground: 231 12% 40%;
 
-    --accent: 234 12% 96%;
-    --accent-foreground: 234 26% 22%;
+    --accent: 234 8% 95%;
+    --accent-foreground: 231 15% 18%;
 
-    /* Trust and reliability colors */
-    --success: 142 76% 36%;
+    /* Financial industry standard colors */
+    --success: 142 71% 45%;
     --success-foreground: 0 0% 100%;
 
-    --warning: 38 92% 50%;
+    --warning: 33 100% 48%;
     --warning-foreground: 0 0% 100%;
 
-    --destructive: 0 84% 60%;
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
-    --border: 234 12% 90%;
-    --input: 234 12% 94%;
+    /* Refined borders and inputs */
+    --border: 234 8% 88%;
+    --input: 234 8% 96%;
     --ring: 234 84% 44%;
 
-    --radius: 0.75rem;
+    --radius: 0.5rem;
 
-    /* Clean, professional gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(234 84% 44%), hsl(234 84% 38%));
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 36%), hsl(142 76% 30%));
-    --gradient-surface: linear-gradient(145deg, hsl(0 0% 100%), hsl(234 12% 98%));
+    /* Professional spacing and elevations */
+    --shadow-sm: 0 1px 2px 0 hsl(231 15% 18% / 0.05);
+    --shadow-md: 0 4px 6px -1px hsl(231 15% 18% / 0.1), 0 2px 4px -1px hsl(231 15% 18% / 0.06);
+    --shadow-lg: 0 10px 15px -3px hsl(231 15% 18% / 0.1), 0 4px 6px -2px hsl(231 15% 18% / 0.05);
     
-    /* Subtle shadows for depth */
-    --shadow-elegant: 0 4px 20px -2px hsl(234 84% 44% / 0.15);
-    --shadow-soft: 0 2px 10px -2px hsl(234 12% 45% / 0.1);
-    
-    /* Smooth transitions */
-    --transition-smooth: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    /* Smooth, professional transitions */
+    --transition-smooth: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-fast: all 0.15s cubic-bezier(0.4, 0, 0.2, 1);
 
     --sidebar-background: 0 0% 98%;
 
@@ -77,46 +76,48 @@ All colors MUST be HSL.
   }
 
   .dark {
-    /* Visa Dark Mode - maintaining brand consistency */
-    --background: 234 26% 8%;
+    /* Visa Dark Mode - Professional dark theme */
+    --background: 231 23% 9%;
     --foreground: 234 12% 95%;
 
-    --card: 234 26% 12%;
+    --card: 231 20% 11%;
     --card-foreground: 234 12% 95%;
 
-    --popover: 234 26% 12%;
+    --popover: 231 20% 11%;
     --popover-foreground: 234 12% 95%;
 
-    /* Visa Blue adapted for dark mode */
-    --primary: 234 84% 64%;
-    --primary-foreground: 234 26% 8%;
+    /* Visa Blue for dark mode - Enhanced visibility */
+    --primary: 234 78% 68%;
+    --primary-foreground: 231 23% 9%;
 
-    --secondary: 234 15% 16%;
-    --secondary-foreground: 234 12% 85%;
+    --secondary: 231 15% 15%;
+    --secondary-foreground: 234 12% 88%;
 
-    --muted: 234 15% 16%;
-    --muted-foreground: 234 12% 65%;
+    --muted: 231 15% 15%;
+    --muted-foreground: 234 12% 60%;
 
-    --accent: 234 15% 16%;
-    --accent-foreground: 234 12% 85%;
+    --accent: 231 15% 15%;
+    --accent-foreground: 234 12% 88%;
 
-    --success: 142 76% 46%;
-    --success-foreground: 234 26% 8%;
+    /* Dark mode financial colors */
+    --success: 142 71% 55%;
+    --success-foreground: 231 23% 9%;
 
-    --warning: 38 92% 60%;
-    --warning-foreground: 234 26% 8%;
+    --warning: 33 100% 58%;
+    --warning-foreground: 231 23% 9%;
 
-    --destructive: 0 84% 70%;
+    --destructive: 0 72% 61%;
     --destructive-foreground: 234 12% 95%;
 
-    --border: 234 15% 20%;
-    --input: 234 15% 16%;
-    --ring: 234 84% 64%;
+    /* Dark mode borders and inputs */
+    --border: 231 15% 18%;
+    --input: 231 15% 15%;
+    --ring: 234 78% 68%;
 
-    /* Dark mode gradients */
-    --gradient-primary: linear-gradient(135deg, hsl(234 84% 64%), hsl(234 84% 54%));
-    --gradient-success: linear-gradient(135deg, hsl(142 76% 46%), hsl(142 76% 36%));
-    --gradient-surface: linear-gradient(145deg, hsl(234 26% 12%), hsl(234 26% 10%));
+    /* Dark mode shadows */
+    --shadow-sm: 0 1px 2px 0 hsl(0 0% 0% / 0.15);
+    --shadow-md: 0 4px 6px -1px hsl(0 0% 0% / 0.2), 0 2px 4px -1px hsl(0 0% 0% / 0.1);
+    --shadow-lg: 0 10px 15px -3px hsl(0 0% 0% / 0.25), 0 4px 6px -2px hsl(0 0% 0% / 0.15);
   }
 }
 

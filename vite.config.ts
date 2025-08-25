@@ -12,8 +12,8 @@ export default defineConfig(({ mode }) => ({
     port: 8080,
   },
   plugins: [
-    react(),
     mdx(),
+    react(),
     mode === 'development' && componentTagger(),
     mode === 'development' && visualizer({
       filename: "stats.html",

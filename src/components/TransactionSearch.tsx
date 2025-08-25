@@ -49,13 +49,13 @@ export const TransactionSearch = ({ onSearch, isLoading, searchStatus, errorMess
   };
 
   return (
-    <Card className="w-full max-w-4xl mx-auto bg-card shadow-lg border">
-      <CardHeader className="pb-6">
-        <CardTitle className="text-3xl font-bold text-center bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent">
+    <Card className="w-full max-w-4xl mx-auto bg-card shadow-md border">
+      <CardHeader className="pb-6 px-4 sm:px-6">
+        <CardTitle className="text-2xl sm:text-3xl font-bold text-center text-primary">
           AI Transaction Analysis Tool
         </CardTitle>
       </CardHeader>
-      <CardContent className="space-y-6">
+      <CardContent className="space-y-6 px-4 sm:px-6">
         {getStatusMessage() && (
           <Alert variant={getStatusVariant()} className="border-l-4">
             <AlertDescription className="flex items-center gap-2">
@@ -71,13 +71,13 @@ export const TransactionSearch = ({ onSearch, isLoading, searchStatus, errorMess
               Select AI Agent Type:
             </label>
             <Select value={agentType} onValueChange={setAgentType}>
-              <SelectTrigger className="w-full h-12 border bg-background">
+              <SelectTrigger className="w-full h-12 border bg-background hover:bg-accent/50 transition-colors">
                 <div className="flex items-center gap-2">
-                  <Bot className="h-4 w-4 text-primary" />
+                  <Bot className="h-4 w-4 text-primary flex-shrink-0" />
                   <SelectValue placeholder="Choose analysis type..." />
                 </div>
               </SelectTrigger>
-              <SelectContent className="bg-popover border-2">
+              <SelectContent className="bg-popover border z-50">
                 <SelectItem value="basic">Basic Analysis</SelectItem>
                 <SelectItem value="advanced">Advanced Fraud Detection</SelectItem>
                 <SelectItem value="compliance">Compliance Review</SelectItem>
@@ -91,28 +91,29 @@ export const TransactionSearch = ({ onSearch, isLoading, searchStatus, errorMess
             <label className="text-sm font-medium text-foreground">
               Enter Transaction ID:
             </label>
-            <div className="flex gap-3">
+            <div className="flex flex-col sm:flex-row gap-3">
               <Input
                 type="text"
                 placeholder="e.g., 80033448364"
                 value={transactionId}
                 onChange={(e) => setTransactionId(e.target.value)}
-                className="flex-1 h-12 border bg-background"
+                className="flex-1 h-12 border bg-background hover:bg-accent/30 transition-colors focus:ring-2 focus:ring-primary/20"
               />
               <Button
                 type="submit"
                 disabled={!agentType || !transactionId || isLoading}
-                className="h-12 px-8 bg-primary hover:bg-primary/90"
+                className="h-12 px-6 sm:px-8 bg-primary hover:bg-primary/90 transition-colors whitespace-nowrap"
               >
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Analyzing
+                    <span className="hidden sm:inline">Analyzing</span>
+                    <span className="sm:hidden">...</span>
                   </>
                 ) : (
                   <>
                     <Search className="mr-2 h-4 w-4" />
-                    Search
+                    <span>Search</span>
                   </>
                 )}
               </Button>

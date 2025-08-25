@@ -73,26 +73,26 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
     };
 
     return (
-      <Card className={`${getBgColor()} backdrop-blur-sm transition-all`}>
+      <Card className={`${getBgColor()} backdrop-blur-sm transition-all shadow-sm`}>
         <Collapsible open={isOpen} onOpenChange={() => toggleSection(id)}>
           <CollapsibleTrigger asChild>
             <Button
               variant="ghost"
-              className="w-full justify-between p-6 h-auto hover:bg-accent/30 rounded-lg"
+              className="w-full justify-between p-4 sm:p-6 h-auto hover:bg-accent/30 rounded-lg transition-colors"
             >
               <div className="flex items-center gap-3">
-                {icon}
-                <span className="text-lg font-semibold">{title}</span>
+                <div className="flex-shrink-0">{icon}</div>
+                <span className="text-base sm:text-lg font-semibold text-left">{title}</span>
               </div>
               {isOpen ? (
-                <ChevronUp className="h-5 w-5 text-muted-foreground" />
+                <ChevronUp className="h-5 w-5 text-muted-foreground flex-shrink-0" />
               ) : (
-                <ChevronDown className="h-5 w-5 text-muted-foreground" />
+                <ChevronDown className="h-5 w-5 text-muted-foreground flex-shrink-0" />
               )}
             </Button>
           </CollapsibleTrigger>
           <CollapsibleContent>
-            <CardContent className="pt-0 pb-6">
+            <CardContent className="pt-0 pb-6 px-4 sm:px-6">
               {children}
             </CardContent>
           </CollapsibleContent>
@@ -111,15 +111,15 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
         variant="primary"
       >
         <div className="space-y-6">
-          <Card className="bg-background border">
-            <CardHeader>
-              <CardTitle className="text-xl">Transaction Analysis Summary</CardTitle>
+          <Card className="bg-background border shadow-sm">
+            <CardHeader className="pb-4 px-4 sm:px-6">
+              <CardTitle className="text-lg sm:text-xl">Transaction Analysis Summary</CardTitle>
             </CardHeader>
-            <CardContent className="space-y-4">
-              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+            <CardContent className="space-y-4 px-4 sm:px-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
                   <p className="text-sm text-muted-foreground">Transaction ID:</p>
-                  <p className="font-mono text-sm font-medium">{data.transactionId}</p>
+                  <p className="font-mono text-sm font-medium break-all">{data.transactionId}</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Status:</p>
@@ -128,7 +128,7 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
                     <span className="text-sm font-medium">Successful</span>
                   </div>
                 </div>
-                <div>
+                <div className="sm:col-span-2 lg:col-span-1">
                   <p className="text-sm text-muted-foreground">Authorization Amount:</p>
                   <p className="text-sm font-medium">$100.00</p>
                 </div>
@@ -138,10 +138,19 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
               
               <div>
                 <h4 className="font-semibold mb-2">AI Recommendations:</h4>
-                <ul className="space-y-1 text-sm text-muted-foreground">
-                  <li>• Transaction appears legitimate with standard risk profile</li>
-                  <li>• CVV and AVS verification successful</li>
-                  <li>• No suspicious patterns detected in transaction history</li>
+                <ul className="space-y-1 text-sm text-muted-foreground pl-4 sm:pl-0">
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    <span>Transaction appears legitimate with standard risk profile</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    <span>CVV and AVS verification successful</span>
+                  </li>
+                  <li className="flex items-start gap-2">
+                    <span className="text-primary mt-1">•</span>
+                    <span>No suspicious patterns detected in transaction history</span>
+                  </li>
                 </ul>
               </div>
             </CardContent>
@@ -156,7 +165,7 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
         icon={<FileText className="h-5 w-5 text-secondary-foreground" />}
         variant="secondary"
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-muted-foreground">Response Code:</p>
             <p className="font-mono text-lg font-bold text-success">1</p>
@@ -165,11 +174,11 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
             <p className="text-sm text-muted-foreground">Reason:</p>
             <p className="text-sm font-medium">Approved</p>
           </div>
-          <div className="md:col-span-2">
+          <div className="sm:col-span-2">
             <p className="text-sm text-muted-foreground">Description:</p>
             <p className="text-sm">Transaction approved successfully. All verification checks passed.</p>
           </div>
-          <div className="md:col-span-2">
+          <div className="sm:col-span-2">
             <p className="text-sm text-muted-foreground">Integration Suggestions:</p>
             <p className="text-sm">Continue with standard processing workflow. No additional verification required.</p>
           </div>
@@ -182,10 +191,10 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
         title="General Transaction Details"
         icon={<CreditCard className="h-5 w-5 text-foreground" />}
       >
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-muted-foreground">Transaction ID:</p>
-            <p className="font-mono text-sm font-medium">{data.transactionId}</p>
+            <p className="font-mono text-sm font-medium break-all">{data.transactionId}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Status:</p>
@@ -199,7 +208,7 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
             <p className="text-sm text-muted-foreground">Response Code:</p>
             <p className="font-mono text-sm font-medium">1</p>
           </div>
-          <div className="md:col-span-2">
+          <div className="sm:col-span-2">
             <p className="text-sm text-muted-foreground">Response Description:</p>
             <p className="text-sm">This transaction has been approved.</p>
           </div>

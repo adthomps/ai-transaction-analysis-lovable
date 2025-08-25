@@ -73,45 +73,48 @@ export const ExampleTransactions = ({ onSelectExample }: ExampleTransactionsProp
   };
 
   return (
-    <Card className="w-full max-w-4xl mx-auto bg-card border">
+    <Card className="w-full max-w-4xl mx-auto bg-card border shadow-sm">
       <Collapsible open={isOpen} onOpenChange={setIsOpen}>
         <CollapsibleTrigger asChild>
           <Button
             variant="ghost"
-            className="w-full justify-between p-6 h-auto hover:bg-accent/50 rounded-lg"
+            className="w-full justify-between p-4 sm:p-6 h-auto hover:bg-accent/50 rounded-lg transition-colors"
           >
             <div className="flex items-center gap-3">
-              <FileText className="h-5 w-5 text-primary" />
-              <span className="text-lg font-semibold">Example Transactions</span>
+              <FileText className="h-5 w-5 text-primary flex-shrink-0" />
+              <span className="text-base sm:text-lg font-semibold">Example Transactions</span>
             </div>
             {isOpen ? (
-              <ChevronUp className="h-5 w-5 text-muted-foreground" />
+              <ChevronUp className="h-5 w-5 text-muted-foreground flex-shrink-0" />
             ) : (
-              <ChevronDown className="h-5 w-5 text-muted-foreground" />
+              <ChevronDown className="h-5 w-5 text-muted-foreground flex-shrink-0" />
             )}
           </Button>
         </CollapsibleTrigger>
         <CollapsibleContent>
-          <CardContent className="pt-0 pb-6">
+          <CardContent className="pt-0 pb-6 px-4 sm:px-6">
             <div className="space-y-3">
               {exampleTransactions.map((transaction) => (
                 <div
                   key={transaction.id}
-                  className="flex items-center justify-between p-4 bg-background rounded-lg border hover:border-primary/50 transition-all cursor-pointer group"
+                  className="flex flex-col sm:flex-row sm:items-center justify-between p-4 bg-background rounded-lg border hover:border-primary/50 hover:shadow-sm transition-all cursor-pointer group"
                   onClick={() => onSelectExample(transaction.id)}
                 >
-                  <div className="flex items-center gap-4">
+                  <div className="flex items-center gap-3 sm:gap-4 mb-2 sm:mb-0">
                     {getStatusIcon(transaction.status)}
-                    <div>
-                      <span className="font-mono text-sm font-medium text-foreground group-hover:text-primary transition-colors">
+                    <div className="min-w-0 flex-1">
+                      <div className="font-mono text-sm font-medium text-foreground group-hover:text-primary transition-colors">
                         {transaction.id}
-                      </span>
-                      <span className="ml-3 text-muted-foreground">
-                        - {transaction.description}
-                      </span>
+                      </div>
+                      <div className="text-sm text-muted-foreground truncate">
+                        {transaction.description}
+                      </div>
                     </div>
                   </div>
-                  <Badge variant={getStatusVariant(transaction.status)} className="capitalize">
+                  <Badge 
+                    variant={getStatusVariant(transaction.status)} 
+                    className="capitalize self-start sm:self-center flex-shrink-0"
+                  >
                     {transaction.status}
                   </Badge>
                 </div>
