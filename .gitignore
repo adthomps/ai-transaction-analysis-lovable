@@ -22,14 +22,3 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
-
-# Environment and sensitive files
-.env
-.env.*
-.env.local
-.env.production
-.env.development
-wrangler.toml
-wrangler.*.toml
-wrangler.secrets.*
-

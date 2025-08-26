@@ -4,14 +4,14 @@ test('has title', async ({ page }) => {
   await page.goto('/');
 
   // Expect a title "to contain" a substring.
-  await expect(page).toHaveTitle(/APT Transaction Analyzer/);
+  await expect(page).toHaveTitle(/Visa Transaction Analyzer/);
 });
 
 test('has main navigation', async ({ page }) => {
   await page.goto('/');
 
   // Expect the main heading to be visible
-  const heading = page.getByRole('heading', { name: /APT Transaction Analyzer/ });
+  const heading = page.getByRole('heading', { name: /Visa Transaction Analyzer/ });
   await expect(heading).toBeVisible();
 });
 

@@ -6,18 +6,9 @@ import { AnalysisResults } from "@/components/AnalysisResults";
 import { useToast } from "@/hooks/use-toast";
 
 const Index = () => {
-  type AnalysisData = {
-  transactionId: string;
-  agentType: string;
-  timestamp: string;
-  prompt?: string;
-  aiInsights?: string;
-  [key: string]: unknown;
-  };
-
   const [searchState, setSearchState] = useState<{
     status: 'idle' | 'searching' | 'success' | 'error';
-    data: AnalysisData | null;
+    data: any;
     errorMessage?: string;
   }>({
     status: 'idle',
@@ -30,53 +21,14 @@ const Index = () => {
     setSearchState({ status: 'searching', data: null });
 
     try {
-      // Step 1: Fetch transaction details
-      const res = await fetch(`/api/transaction/${transactionId}`);
-      const transaction = await res.json();
+      // Simulate API call
+      await new Promise(resolve => setTimeout(resolve, 2000));
 
-      if (!res.ok || transaction.error) {
-        setSearchState({
-          status: 'error',
-          data: null,
-          errorMessage: transaction.error || 'Transaction not found.'
-        });
-        toast({
-          title: "Analysis Failed",
-          description: transaction.error || "Unable to complete transaction analysis. Please check the transaction ID and try again.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      // Step 2: Call /api/analyze with transaction and agentType
-      const analyzeRes = await fetch('/api/analyze', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ transaction, promptType: agentType })
-      });
-      const analysis = await analyzeRes.json();
-
-      if (!analyzeRes.ok || analysis.error) {
-        setSearchState({
-          status: 'error',
-          data: null,
-          errorMessage: analysis.error || 'Analysis failed.'
-        });
-        toast({
-          title: "Analysis Failed",
-          description: analysis.error || "Unable to complete transaction analysis. Please try again.",
-          variant: "destructive",
-        });
-        return;
-      }
-
-      // Prepare analysis data for AnalysisResults
+      // Mock successful response
       const analysisData = {
-        transactionId: transaction.transId,
+        transactionId,
         agentType,
-        timestamp: new Date().toISOString(),
-        ...transaction,
-        ...analysis // includes prompt, aiInsights, etc.
+        timestamp: new Date().toISOString()
       };
 
       setSearchState({
@@ -86,7 +38,7 @@ const Index = () => {
 
       toast({
         title: "Analysis Complete",
-        description: `Transaction ${transaction.transId} analyzed successfully with ${agentType} agent.`,
+        description: `Transaction ${transactionId} analyzed successfully with ${agentType} agent.`,
       });
 
     } catch (error) {
@@ -95,6 +47,7 @@ const Index = () => {
         data: null,
         errorMessage: "Failed to analyze transaction. Please try again."
       });
+
       toast({
         title: "Analysis Failed",
         description: "Unable to complete transaction analysis. Please check the transaction ID and try again.",
@@ -111,37 +64,27 @@ const Index = () => {
     });
   };
 
-
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="container mx-auto px-4 py-8">
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_24rem] gap-8">
-          <section className="space-y-8">
-            {/* Search Interface */}
-            <TransactionSearch
-              onSearch={handleSearch}
-              isLoading={searchState.status === 'searching'}
-              searchStatus={searchState.status}
-              errorMessage={searchState.errorMessage}
-            />
+      <main className="container mx-auto px-4 py-8 space-y-8">
+        {/* Search Interface */}
+        <TransactionSearch
+          onSearch={handleSearch}
+          isLoading={searchState.status === 'searching'}
+          searchStatus={searchState.status}
+          errorMessage={searchState.errorMessage}
+        />
 
-            {/* Analysis Results */}
-            {searchState.status === 'success' && searchState.data && (
-              <div className="animate-in slide-in-from-bottom-4 duration-500">
-                <AnalysisResults data={searchState.data} />
-              </div>
-            )}
-          </section>
-          {/* Desktop: ExampleTransactions in top-level aside landmark */}
-          <aside className="hidden lg:block" aria-label="Example Transactions">
-            <ExampleTransactions onSelectExample={handleExampleSelect} />
-          </aside>
-        </div>
-        {/* Mobile: ExampleTransactions in top-level aside landmark below main content */}
-        <aside className="block lg:hidden mt-8" aria-label="Example Transactions">
-          <ExampleTransactions onSelectExample={handleExampleSelect} />
-        </aside>
+        {/* Example Transactions */}
+        <ExampleTransactions onSelectExample={handleExampleSelect} />
+
+        {/* Analysis Results */}
+        {searchState.status === 'success' && searchState.data && (
+          <div className="animate-in slide-in-from-bottom-4 duration-500">
+            <AnalysisResults data={searchState.data} />
+          </div>
+        )}
       </main>
     </div>
   );
