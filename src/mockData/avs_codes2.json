@@ -1,0 +1,32 @@
+[
+    {
+        "avs_code": "Y",
+        "avs_description": "Address and 5-digit ZIP code match.",
+        "avs_recommendation": "This transaction has passed the AVS check. Proceed as usual."
+    },
+    {
+        "avs_code": "N",
+        "avs_description": "Address and ZIP code do not match.",
+        "avs_recommendation": "Investigate further before proceeding. Contact the customer if necessary."
+    },
+    {
+        "avs_code": "A",
+        "avs_description": "Address matches, but ZIP code does not.",
+        "avs_recommendation": "Verify the ZIP code with the customer."
+    },
+    {
+        "avs_code": "Z",
+        "avs_description": "ZIP code matches, but address does not.",
+        "avs_recommendation": "Verify the address with the customer."
+    },
+    {
+        "avs_code": "U",
+        "avs_description": "AVS is unavailable for this transaction.",
+        "avs_recommendation": "Proceed with caution. Consider contacting the customer."
+    },
+    {
+        "avs_code": "R",
+        "avs_description": "System unavailable or timeout.",
+        "avs_recommendation": "Retry the transaction later."
+    }
+]

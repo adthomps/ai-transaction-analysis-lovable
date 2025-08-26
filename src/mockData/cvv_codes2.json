@@ -1,0 +1,27 @@
+[
+    {
+        "cvv_code": "M",
+        "cvv_description": "CVV2/CVC2 match.",
+        "cvv_recommendation": "This transaction has passed the CVV check. Proceed as usual."
+    },
+    {
+        "cvv_code": "N",
+        "cvv_description": "CVV2/CVC2 did not match.",
+        "cvv_recommendation": "Investigate further before proceeding. Contact the customer if necessary."
+    },
+    {
+        "cvv_code": "P",
+        "cvv_description": "CVV2/CVC2 was not processed.",
+        "cvv_recommendation": "Retry the transaction or verify with the customer."
+    },
+    {
+        "cvv_code": "S",
+        "cvv_description": "CVV2/CVC2 should have been present but was not indicated.",
+        "cvv_recommendation": "Contact the customer to provide the CVV."
+    },
+    {
+        "cvv_code": "U",
+        "cvv_description": "Issuer does not support CVV2/CVC2.",
+        "cvv_recommendation": "Proceed with caution."
+    }
+]

@@ -1,0 +1,22 @@
+[
+    {
+        "afds_filter": "Amount Filter",
+        "afds_action": "Hold for Review",
+        "afds_description": "This filter is used to hold transactions for review if the amount is less than or greater than a value configured for the account."
+    },
+    {
+        "afds_filter": "Velocity Filter",
+        "afds_action": "Decline",
+        "afds_description": "This filter is used to decline transactions if the number of transactions for the account exceeds a value configured for the account."
+    },
+    {
+        "afds_filter": "IP Address Filter",
+        "afds_action": "Hold for Review",
+        "afds_description": "This filter is used to hold transactions for review if the IP address of the transaction does not match the IP address of the account."
+    },
+    {
+        "afds_filter": "Country Filter",
+        "afds_action": "Decline",
+        "afds_description": "This filter is used to decline transactions if the country of the transaction does not match the country of the account."
+    }
+]

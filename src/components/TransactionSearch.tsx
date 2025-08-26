@@ -3,7 +3,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
-import { Search, Bot, Loader2 } from "lucide-react";
+import { Search, Bot, Loader2, CheckCircle, XCircle } from "lucide-react";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
 interface TransactionSearchProps {
@@ -56,13 +56,32 @@ export const TransactionSearch = ({ onSearch, isLoading, searchStatus, errorMess
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-6 px-4 sm:px-6">
+
         {getStatusMessage() && (
-          <Alert variant={getStatusVariant()} className="border-l-4">
-            <AlertDescription className="flex items-center gap-2">
-              {searchStatus === 'searching' && <Loader2 className="h-4 w-4 animate-spin" />}
+          <div
+            className={`rounded-lg px-4 py-3 flex items-center gap-3 mb-2 font-medium shadow-sm border
+              ${searchStatus === 'success'
+                ? 'bg-success/10 border-success'
+                : searchStatus === 'error'
+                ? 'bg-destructive/10 border-destructive'
+                : 'bg-primary/10 border-primary'}
+            `}
+          >
+            {searchStatus === 'success' && <CheckCircle className="h-5 w-5 text-success" />}
+            {searchStatus === 'error' && <XCircle className="h-5 w-5 text-destructive" />}
+            {searchStatus === 'searching' && <Loader2 className="h-5 w-5 animate-spin text-primary" />}
+            <span
+              className={
+                searchStatus === 'success'
+                  ? 'text-green-700 dark:text-green-300 font-semibold'
+                  : searchStatus === 'error'
+                  ? 'text-red-700 dark:text-red-300 font-semibold'
+                  : 'text-blue-700 dark:text-blue-300 font-semibold'
+              }
+            >
               {getStatusMessage()}
-            </AlertDescription>
-          </Alert>
+            </span>
+          </div>
         )}
 
         <form onSubmit={handleSubmit} className="space-y-6">
