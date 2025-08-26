@@ -1,0 +1,22 @@
+[
+    {
+        "filter": "Amount Filter",
+        "action": "Hold for Review",
+        "description": "This filter is used to hold transactions for review if the amount is less than or greater than a value configured for the account."
+    },
+    {
+        "filter": "Velocity Filter",
+        "action": "Decline",
+        "description": "This filter is used to decline transactions if the number of transactions for the account exceeds a value configured for the account."
+    },
+    {
+        "filter": "IP Address Filter",
+        "action": "Hold for Review",
+        "description": "This filter is used to hold transactions for review if the IP address of the transaction does not match the IP address of the account."
+    },
+    {
+        "filter": "Country Filter",
+        "action": "Decline",
+        "description": "This filter is used to decline transactions if the country of the transaction does not match the country of the account."
+    }
+]

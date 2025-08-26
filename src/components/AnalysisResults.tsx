@@ -119,18 +119,18 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                 <div>
                   <p className="text-sm text-muted-foreground">Transaction ID:</p>
-                  <p className="font-mono text-sm font-medium break-all">{data.transactionId}</p>
+                  <p className="font-mono text-sm font-medium break-all">{data.transId || data.transactionId}</p>
                 </div>
                 <div>
                   <p className="text-sm text-muted-foreground">Status:</p>
                   <div className="flex items-center gap-2">
-                    {getStatusIcon('successful')}
-                    <span className="text-sm font-medium">Successful</span>
+                    {getStatusIcon(data.transactionStatus || '')}
+                    <span className="text-sm font-medium">{data.transactionStatus}</span>
                   </div>
                 </div>
                 <div className="sm:col-span-2 lg:col-span-1">
                   <p className="text-sm text-muted-foreground">Authorization Amount:</p>
-                  <p className="text-sm font-medium">$100.00</p>
+                  <p className="text-sm font-medium">${data.authAmount?.toFixed(2)}</p>
                 </div>
               </div>
               
@@ -168,15 +168,15 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-muted-foreground">Response Code:</p>
-            <p className="font-mono text-lg font-bold text-success">1</p>
+            <p className="font-mono text-lg font-bold">{data.responseCode}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Reason:</p>
-            <p className="text-sm font-medium">Approved</p>
+            <p className="text-sm font-medium">{data.responseReasonDescription}</p>
           </div>
           <div className="sm:col-span-2">
             <p className="text-sm text-muted-foreground">Description:</p>
-            <p className="text-sm">Transaction approved successfully. All verification checks passed.</p>
+            <p className="text-sm">{data.responseReasonDescription}</p>
           </div>
           <div className="sm:col-span-2">
             <p className="text-sm text-muted-foreground">Integration Suggestions:</p>
@@ -194,23 +194,40 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-muted-foreground">Transaction ID:</p>
-            <p className="font-mono text-sm font-medium break-all">{data.transactionId}</p>
+            <p className="font-mono text-sm font-medium break-all">{data.transId || data.transactionId}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Status:</p>
-            <Badge variant="default" className="bg-success text-success-foreground">Successful</Badge>
+            <Badge
+              variant={
+                ["declined", "failed"].includes((data.transactionStatus || '').toLowerCase())
+                  ? "destructive"
+                  : ["pending", "review"].includes((data.transactionStatus || '').toLowerCase())
+                  ? "warning"
+                  : "success"
+              }
+              className={
+                ["declined", "failed"].includes((data.transactionStatus || '').toLowerCase())
+                  ? "bg-destructive text-destructive-foreground"
+                  : ["pending", "review"].includes((data.transactionStatus || '').toLowerCase())
+                  ? "bg-warning text-warning-foreground"
+                  : "bg-success text-success-foreground"
+              }
+            >
+              {data.transactionStatus}
+            </Badge>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Auth Amount:</p>
-            <p className="text-sm font-medium">$100.00</p>
+            <p className="text-sm font-medium">${data.authAmount?.toFixed(2)}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Response Code:</p>
-            <p className="font-mono text-sm font-medium">1</p>
+            <p className="font-mono text-sm font-medium">{data.responseCode}</p>
           </div>
           <div className="sm:col-span-2">
             <p className="text-sm text-muted-foreground">Response Description:</p>
-            <p className="text-sm">This transaction has been approved.</p>
+            <p className="text-sm">{data.responseReasonDescription}</p>
           </div>
         </div>
       </CollapsibleSection>
@@ -225,15 +242,45 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <div>
               <p className="text-sm text-muted-foreground">AFDS Filter(s):</p>
-              <p className="text-sm font-medium">None Applied</p>
+              <p className="text-sm font-medium">{Array.isArray(data.afdsFilters) && data.afdsFilters.length > 0 ? data.afdsFilters.map(f => f.name).join(', ') : 'None Applied'}</p>
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Action:</p>
-              <Badge variant="default" className="bg-success text-success-foreground">Accept</Badge>
+              <Badge
+                variant={
+                  Array.isArray(data.afdsFilters) && data.afdsFilters.some(f => (f.action || '').toLowerCase().includes('hold'))
+                    ? "warning"
+                    : "success"
+                }
+                className={
+                  Array.isArray(data.afdsFilters) && data.afdsFilters.some(f => (f.action || '').toLowerCase().includes('hold'))
+                    ? "bg-warning text-warning-foreground"
+                    : "bg-success text-success-foreground"
+                }
+              >
+                {Array.isArray(data.afdsFilters) && data.afdsFilters.length > 0 ? data.afdsFilters.map(f => f.action).join(', ') : 'Accept'}
+              </Badge>
             </div>
             <div>
               <p className="text-sm text-muted-foreground">Risk Score:</p>
-              <p className="text-sm font-medium">Low (12/100)</p>
+              <Badge
+                variant={
+                  (data.riskDetails || '').toLowerCase().includes('high')
+                    ? "destructive"
+                    : (data.riskDetails || '').toLowerCase().includes('medium')
+                    ? "warning"
+                    : "success"
+                }
+                className={
+                  (data.riskDetails || '').toLowerCase().includes('high')
+                    ? "bg-destructive text-destructive-foreground"
+                    : (data.riskDetails || '').toLowerCase().includes('medium')
+                    ? "bg-warning text-warning-foreground"
+                    : "bg-success text-success-foreground"
+                }
+              >
+                {data.riskDetails || 'N/A'}
+              </Badge>
             </div>
           </div>
           <div>
@@ -252,11 +299,16 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-muted-foreground">AVS Response:</p>
-            <p className="font-mono text-sm font-medium">Y</p>
+            <p className="font-mono text-sm font-medium">{data.AVSResponse}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Match Status:</p>
-            <Badge variant="default" className="bg-success text-success-foreground">Full Match</Badge>
+            <Badge
+              variant={data.AVSResponse === 'Y' ? "success" : "destructive"}
+              className={data.AVSResponse === 'Y' ? "bg-success text-success-foreground" : "bg-destructive text-destructive-foreground"}
+            >
+              {data.AVSResponse === 'Y' ? 'Full Match' : 'No Match'}
+            </Badge>
           </div>
           <div className="md:col-span-2">
             <p className="text-sm text-muted-foreground">Description:</p>
@@ -278,11 +330,16 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div>
             <p className="text-sm text-muted-foreground">CVV Response:</p>
-            <p className="font-mono text-sm font-medium">M</p>
+            <p className="font-mono text-sm font-medium">{data.CVVResponse}</p>
           </div>
           <div>
             <p className="text-sm text-muted-foreground">Match Status:</p>
-            <Badge variant="default" className="bg-success text-success-foreground">Match</Badge>
+            <Badge
+              variant={data.CVVResponse === 'M' ? "success" : "destructive"}
+              className={data.CVVResponse === 'M' ? "bg-success text-success-foreground" : "bg-destructive text-destructive-foreground"}
+            >
+              {data.CVVResponse === 'M' ? 'Match' : 'No Match'}
+            </Badge>
           </div>
           <div className="md:col-span-2">
             <p className="text-sm text-muted-foreground">Description:</p>
@@ -335,6 +392,21 @@ export const AnalysisResults = ({ data }: AnalysisResultsProps) => {
             <p className="text-sm text-muted-foreground">Recommendation:</p>
             <p className="text-sm">Transaction is protected by 3D Secure liability shift. Proceed with confidence.</p>
           </div>
+        </div>
+      </CollapsibleSection>
+
+      {/* Agent Instructions Section */}
+      <CollapsibleSection
+        id="agent-instructions"
+        title="Agent Instructions"
+        icon={<FileText className="h-5 w-5 text-primary" />}
+        variant="primary"
+      >
+        <div className="space-y-2">
+          <p className="text-sm text-muted-foreground">Prompt used for analysis:</p>
+          <pre className="bg-muted/10 p-3 rounded text-xs whitespace-pre-wrap break-words">
+            {data.agentInstructions || data.prompt || 'No instructions available.'}
+          </pre>
         </div>
       </CollapsibleSection>
     </div>

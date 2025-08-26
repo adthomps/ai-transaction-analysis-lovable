@@ -1,0 +1,91 @@
+[
+    {
+        "transId": "80033448364",
+        "transactionStatus": "Successful",
+        "responseCode": 1,
+        "responseReasonDescription": "This transaction has been approved.",
+        "authAmount": 100.00,
+        "settleAmount": 100.00,
+        "batch": {
+            "settlementState": "Settled Successfully"
+        },
+        "afdsFilters": [],
+        "AVSResponse": "Y",
+        "CVVResponse": "M",
+        "riskDetails": "Low risk",
+        "threeDSStatus": "Authenticated",
+        "threeDSResponse": "Y",
+        "payment": {
+            "creditCard": {
+                "cardType": "Visa",
+                "cardNumber": "XXXX1111"
+            }
+        },
+        "customer": {
+            "firstName": "Alice",
+            "lastName": "Smith",
+            "email": "alice.smith@example.com"
+        }
+    },
+    {
+        "transId": "80031664953",
+        "transactionStatus": "Authorized Pending Review",
+        "responseCode": 193,
+        "responseReasonDescription": "The transaction is currently under review.",
+        "authAmount": 12.00,
+        "settleAmount": 0.00,
+        "batch": {
+            "settlementState": "Unsettled"
+        },
+        "afdsFilters": [
+            {
+                "name": "Amount Filter",
+                "action": "Hold for Review"
+            }
+        ],
+        "AVSResponse": "N",
+        "CVVResponse": "M",
+        "riskDetails": "Medium risk",
+        "threeDSStatus": "Failed",
+        "threeDSResponse": "N",
+        "payment": {
+            "creditCard": {
+                "cardType": "MasterCard",
+                "cardNumber": "XXXX2222"
+            }
+        },
+        "customer": {
+            "firstName": "Bob",
+            "lastName": "Johnson",
+            "email": "bob.johnson@example.com"
+        }
+    },
+    {
+        "transId": "80031664954",
+        "transactionStatus": "Declined",
+        "responseCode": 2,
+        "responseReasonDescription": "This transaction has been declined by the issuer.",
+        "authAmount": 150.75,
+        "settleAmount": 0.00,
+        "batch": {
+            "settlementState": "Unsettled Decline"
+        },
+        "afdsFilters": [],
+        "AVSResponse": "N",
+        "CVVResponse": "N",
+        "riskDetails": "High risk",
+        "threeDSStatus": "Unavailable",
+        "threeDSResponse": "U",
+        "payment": {
+            "creditCard": {
+                "cardType": "Discover",
+                "cardNumber": "XXXX3333"
+            }
+        },
+        "customer": {
+            "firstName": "Carol",
+            "lastName": "Williams",
+            "email": "carol.williams@example.com"
+        }
+    }
+]

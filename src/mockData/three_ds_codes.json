@@ -1,0 +1,56 @@
+{
+    "threeDSStatus": [
+        {
+            "value": "Authenticated",
+            "description": "3DS was is avaiable and successfully authenticated.",
+            "recommendation": "No action needed."
+        },
+        {
+            "value": "Unavailable",
+            "description": "3DS was unavailable for this transaction.",
+            "recommendation": "Please try again later or contact support."
+        },
+        {
+            "value": "Failed",
+            "description": "The 3DS authentication process failed.",
+            "recommendation": "Please verify your information and try again."
+        },
+        {
+            "value": "Error",
+            "description": "An error occurred during 3DS processing.",
+            "recommendation": "Please contact support for assistance."
+        }
+    ],
+    "threeDSResponse": [
+        {
+            "value": "Y",
+            "description": "Authentication successful.",
+            "recommendation": "No action needed."
+        },
+        {
+            "value": "A",
+            "description": "Authentication attempted but not successful.",
+            "recommendation": "Please verify your information and try again."
+        },
+        {
+            "value": "N",
+            "description": "Authentication failed.",
+            "recommendation": "Please verify your information and try again."
+        },
+        {
+            "value": "U",
+            "description": "Authentication unavailable or not performed.",
+            "recommendation": "Please try again later or contact support."
+        },
+        {
+            "value": "R",
+            "description": "Cardholder rejected authentication.",
+            "recommendation": "Please contact your card issuer for more information."
+        },
+        {
+            "value": "E",
+            "description": "Error during authentication.",
+            "recommendation": "Please contact support for assistance."
+        }
+    ]
+}

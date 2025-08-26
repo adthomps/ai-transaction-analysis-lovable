@@ -1,0 +1,18 @@
+// Wrangler configuration for Cloudflare Workers (converted from TOML)
+// See https://developers.cloudflare.com/workers/wrangler/configuration/
+// NOTE: If you use SPA fallback (not_found_handling: "single-page-application"),
+// direct browser navigation to /api/* routes will be intercepted and return index.html.
+// To allow API routes to work, set run_worker_first: true and ensure your Hono catch-all route serves assets and SPA fallback.
+{
+  "name": "ai-transaction-analysis",
+  "main": "server.ts",
+  "workers_dev": true,
+  "compatibility_date": "2025-08-17",
+  "build": {
+    "command": "pnpm build"
+  },
+  "assets": {
+    "directory": "dist",
+    "binding": "ASSETS"
+  }
+}
