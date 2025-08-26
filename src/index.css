@@ -9,7 +9,7 @@ All colors MUST be HSL.
 @layer base {
   :root {
     /* Visa Design System Colors - All HSL - Optimized for trust and reliability */
-  --background: 0 0% 98%; /* Off-white for reduced glare */
+    --background: 0 0% 100%;
     --foreground: 231 15% 18%;
 
     --card: 0 0% 100%;
@@ -27,10 +27,7 @@ All colors MUST be HSL.
     --secondary-foreground: 231 15% 18%;
 
     --muted: 234 8% 95%;
-  --text-primary: 231 15% 18%;
-  --text-secondary: 231 12% 40%;
-  --text-disabled: 231 8% 60%;
-  --muted-foreground: 231 12% 50%;
+    --muted-foreground: 231 12% 40%;
 
     --accent: 234 8% 95%;
     --accent-foreground: 231 15% 18%;
@@ -42,7 +39,7 @@ All colors MUST be HSL.
     --warning: 33 100% 48%;
     --warning-foreground: 0 0% 100%;
 
-  --destructive: 0 60% 50%; /* Slightly desaturated red for readability */
+    --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
 
     /* Refined borders and inputs */
@@ -80,7 +77,7 @@ All colors MUST be HSL.
 
   .dark {
     /* Visa Dark Mode - Professional dark theme */
-  --background: 231 23% 12%; /* Slightly lighter for better contrast */
+    --background: 231 23% 9%;
     --foreground: 234 12% 95%;
 
     --card: 231 20% 11%;
@@ -97,10 +94,7 @@ All colors MUST be HSL.
     --secondary-foreground: 234 12% 88%;
 
     --muted: 231 15% 15%;
-  --text-primary: 234 12% 95%;
-  --text-secondary: 234 12% 70%;
-  --text-disabled: 234 8% 50%;
-  --muted-foreground: 234 12% 70%;
+    --muted-foreground: 234 12% 60%;
 
     --accent: 231 15% 15%;
     --accent-foreground: 234 12% 88%;
@@ -112,7 +106,7 @@ All colors MUST be HSL.
     --warning: 33 100% 58%;
     --warning-foreground: 231 23% 9%;
 
-  --destructive: 0 60% 61%; /* Slightly desaturated red for readability */
+    --destructive: 0 72% 61%;
     --destructive-foreground: 234 12% 95%;
 
     /* Dark mode borders and inputs */
